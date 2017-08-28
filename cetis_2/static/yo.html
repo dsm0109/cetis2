@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Información {{user.username}}
+{% endblock %}
+
+{% block titulo-nav %}
+Mi información
+{% endblock %}
+
+{% block titulo-nav-mob %}
+Mi información
+{% endblock %}
+
+{% block contenido %}
+<!-- btn flotante -->
+  <a class="tooltipped btn-floating btn-large waves-effect waves-light btn-editar hoverable" data-position="left" data-delay="50" data-tooltip="Editar mi información" href="{% url 'editar' %}"><i class="material-icons">edit</i></a>
+
+
+
+<div class="row">
+	<div class="col s12">
+		<div class="aux-mt-mb">
+			<span class="sub">Información general del alumno</span><br>
+			<span class="sub-2">Se muestran algunos datos personales y la foto del alumno.</span>
+		</div>
+	</div>
+
+		<div class="col s12">
+
+			<div class="center">
+			<img src="{{user.imagen_perfil.url}}" class="img_perfil_yo circle hoverable">
+			<img src="{% static 'img/bg.jpg' %}" class="bg_yo">
+
+			</div>
+
+		<div class="card">
+			<div class="card-content">
+						<table class="bordered highlight centered">
+					<tbody>
+						<tr>
+							<td class="c-p fw-400">Número de control</td>
+							<td>{{user.username}}</td>
+						</tr>
+						
+						<tr>
+							<td class="c-p fw-400">Nombre</td>
+							<td>{{user.first_name|title}} {{user.last_name|title}}</td>
+						</tr>
+
+						<tr>
+							<td class="c-p fw-400">Sexo</td>
+							<td>{{user.sexo}}</td>
+						</tr>
+
+
+						<tr>
+							<td class="c-p fw-400">CURP</td>
+							<td>{{user.curp|upper}}</td>
+						</tr>
+
+						<tr>
+							<td class="c-p fw-400">Correo electrónico</td>
+							<td>{{user.email}}</td>
+						</tr>
+
+
+						<tr>
+							<td class="c-p fw-400">Fecha de nacimiento</td>
+							<td>{{user.fecha_nacimiento}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Número casa</td>
+							<td>{{user.numero_casa}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Número celular</td>
+							<td>{{user.numero_celular}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Dirección</td>
+							<td>{{user.domicilio|title}}</td>
+						</tr>
+
+						<tr>
+							<td class="c-p fw-400">Colonia</td>
+							<td>{{user.colonia|title}}</td>
+						</tr>
+
+						<tr>
+							<td class="c-p fw-400">Delegación</td>
+							<td>{{user.delegacion}}</td>
+						</tr>
+
+						<tr>
+							<td class="c-p fw-400">Código Postal</td>
+							<td>{{user.cp}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col s12">
+		<div class="aux-mt-mb">
+			<span class="sub">Información escolar del alumno</span><br>
+			<span class="sub-2">Se muestran los datos correspondientes a la formación académica del alumno.</span>
+		</div>
+	</div>
+
+
+	<div class="col s6 m3">
+		<div class="card white">
+			<div class="card-content center">
+						<span class="card-txt-color-1">{{user.carrera}}</span><br>
+						<span class="card-txt-color-2">Carrera</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="col s6 m3">
+		<div class="card white">
+			<div class="card-content center">
+						<span class="card-txt-color-1">{{user.turno}}</span><br>
+						<span class="card-txt-color-2">Turno</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="col s6 m3">
+		<div class="card white">
+			<div class="card-content center">
+						<span class="card-txt-color-1">{{user.semestre}}</span><br>
+						<span class="card-txt-color-2">Semestre</span>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="col s6 m3">
+		<div class="card white">
+			<div class="card-content center">
+						<span class="card-txt-color-1">{{user.grupo}}</span><br>
+						<span class="card-txt-color-2">Grupo</span>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col s12">
+		<div class="aux-mt-mb">
+			<span class="sub">Información médica del alumno</span><br>
+			<span class="sub-2">Se muestran los datos médicos primordiales del alumno.</span>
+		</div>
+		<div class="card white">
+			<div class="card-content">
+				<table class="bordered highlight">
+					
+					<tbody>
+						<tr>
+							<td class="c-p fw-400">Servicio médico</td>
+							<td>{{user.servicio_medico}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Descripción servicio médico</td>
+							<td>{{user.des_servicio_medico|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">NSS</td>
+							<td>{{user.nss}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Tipo de sangre</td>
+							<td>{{user.tipo_sangre}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Alergias</td>
+							<td>{{user.alergias|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Enfermedades crónicas</td>
+							<td>{{user.enf_cronicas|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Medicamentos de uso permanente</td>
+							<td>{{user.medicamentos|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Impedimentos</td>
+							<td>{{user.impedimentos|title}}</td>
+						</tr>
+					</tbody>
+				</table>		
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col s12">
+		<div class="aux-mt-mb">
+			<span class="sub">Información general del tutor</span><br>
+			<span class="sub-2">Se muestran los datos del padre o tutor responsable del alumno.</span>
+		</div>
+	</div>
+	
+
+	<div class="col s12">
+		<div class="card">
+			<div class="card-content">
+						<table class="bordered highlight">
+					
+					<tbody>
+						<tr>
+							<td class="c-p fw-400">Nombre completo</td>
+							<td>{{user.nombre_tutor|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Dirección</td>
+							<td>{{user.direccion_tutor|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Ocupación</td>
+							<td>{{user.ocupacion_tutor|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Dirección del trabajo</td>
+							<td>{{user.trabajo_tutor|title}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Télefono de contacto</td>
+							<td>{{user.numeroUno_tutor}}</td>
+						</tr>
+						<tr>
+							<td class="c-p fw-400">Otro télefono de contacto</td>
+							<td>{{user.numeroDos_tutor}}</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

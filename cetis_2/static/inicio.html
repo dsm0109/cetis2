@@ -1,0 +1,339 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}
+Reinscripción {{user.username}}
+{% endblock %}
+
+{% block titulo-nav %}
+Inicio
+{% endblock %}
+
+{% block titulo-nav-mob %}
+Inicio
+{% endblock %}
+
+{% block contenido %}
+
+
+
+<div class="row">
+	<div class="col s12 aux-mt-mb">
+		<span class="sub">Progreso</span><br>
+   <span class="sub-2">Se muestra de forma visual el avance general en el proceso de reinscripción, separado en cuatro módulos.</span>
+
+ </div>
+ <div class="col s12">
+  <div class="card white">
+   <div class="card-content">
+    <div class="col s10 offset-s1 m6 offset-m3 l4 offset-l4">
+          <canvas id="myChart" width="400" height="400"></canvas>
+
+    </div>
+
+
+
+    <ol class="progresss">
+
+      {% if not user.paso_1 and not user.paso_2 and not user.paso_3 and not user.paso_4%}
+
+      <li class="is-active" data-step="1">
+        Registro
+      </li>
+      <li class="" data-step="2">
+        Aportación
+      </li>
+      <li class="" data-step="3">
+        Reglamento
+      </li>
+      <li data-step="4" class="progresss__last">
+        Cita
+      </li>
+      {% endif %}
+
+
+      {% if user.paso_1 and not user.paso_2 and not user.paso_3 and not user.paso_4 %}
+
+      <li class="is-complete" data-step="1">
+        Registro
+      </li>
+      <li class="is-active" data-step="2">
+        Aportación
+      </li>
+      <li class="" data-step="3">
+        Reglamento
+      </li>
+      <li data-step="4" class="progresss__last">
+        Cita
+      </li>
+      {% endif %}
+
+      {% if user.paso_1 and user.paso_2 and not user.paso_3 and not user.paso_4%}
+
+      <li class="is-complete" data-step="1">
+        Registro
+      </li>
+      <li class="is-complete" data-step="2">
+        Aportación
+      </li>
+      <li class="is-active" data-step="3">
+        Reglamento
+      </li>
+      <li data-step="4" class="progresss__last">
+        Cita
+      </li>
+      {% endif %}
+
+      {% if user.paso_1 and user.paso_2 and user.paso_3 and not user.paso_4%}
+
+      <li class="is-complete" data-step="1">
+        Registro
+      </li>
+      <li class="is-complete" data-step="2">
+        Aportación
+      </li>
+      <li class="is-complete" data-step="3">
+        Reglamento
+      </li>
+      <li data-step="4" class="is-active progresss__last">
+        Cita
+      </li>
+      {% endif %}
+
+      {% if user.paso_1 and user.paso_2 and user.paso_3 and user.paso_4%}
+
+      <li class="is-complete" data-step="1">
+        Registro
+      </li>
+      <li class="is-complete" data-step="2">
+        Aportación
+      </li>
+      <li class="is-complete" data-step="3">
+        Reglamento
+      </li>
+      <li data-step="4" class="is-complete progresss__last">
+        Cita
+      </li>
+      {% endif %}
+
+
+    </ol>
+
+    <p class="c-t center"><br>Es importante recordar que cada módulo esta seriado, por lo tanto necesitas seguir el orden establecido.</p>
+  </div>
+</div>
+</div>
+
+
+
+<div class="col s12 aux-mt-mb">
+  <span class="sub">Avisos</span><br>
+  <span class="sub-2">Información importante que debe leer el alumno.</span>
+</div>
+
+
+
+<div class="col s12">
+  <div class="card orange hoverable">
+    <div class="card-content white-text">
+      <p><b>ERROR 500</b><br><br>
+Este error puede aparecer por:<br>
+
+• No se agregó foto de perfil<br>
+• El peso es mayor al recomendado (1MB)<br>
+Si no se generó correctamente alguno de tus documentos, vuelve a descargarlo e imprimirlo.
+</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+<div class="col s12 m6 l3">
+  <div class="card cyan   darken-3 hoverable">
+    <div class="card-content white-text">
+      <p><b>MI IMAGEN NO SE VE</b><br><br>
+Por el momento, la imagen no se muestra en tu perfil, sin embargo no afecta tu proceso de reinscripción.
+</p>
+      </div>
+
+    </div>
+  </div>
+
+<div class="col s12 m6 l3">
+  <div class="card purple hoverable">
+    <div class="card-content white-text">
+      <p><b>CANAL YOUTUBE</b><br><br>
+Suscribete al canal de youtube del plantel, ya que se actualizará constantemente para hacerte llegar diferentes anuncios.<br><br>
+<b>https://goo.gl/ZK56tj</b>
+
+</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+<div class="col s12 m6 l3">
+  <div class="card pink hoverable">
+    <div class="card-content white-text">
+      <p><b>IMAGEN DE PERFIL:</b><br><br>
+Recomendaciones sobre la imagen del perfil:<br>
+
+• Debe pesar menos de 1 MB, preferentemente<br>
+• Ser cuadrada<br>
+• Cara descubierta, sin maquillaje (señoritas)<br>
+• Sin filtros<br><br>
+
+En caso de tener algún problema, manda un correo a <b>appcetis2@gmail.com</b><br>
+Escribe en asunto lo siguiente:<br>
+Asunto: <b>[PB_01]</b>
+</p>
+      </div>
+
+    </div>
+  </div>
+
+
+<div class="col s12 m6 l3">
+  <div class="card light-blue hoverable">
+    <div class="card-content white-text">
+      <p><b>¿NO CUENTAS CON LA CLAVE?</b><br><br>
+Si no cuentas con la clave proporcionada por contraloría, asiste lo antes posible a dicha área y posteriormente continua con tu proceso. Envía un correo a <b>appcetis2@gmail.com</b> para reprogramar tu cita de atención.<br>
+Escribe en asunto lo siguiente: <br>
+Asunto: <b>[PB_02]</b>
+
+</p>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col s12 aux-mt-mb">
+  <span class="sub">Descripción de los módulos</span><br>
+  <span class="sub-2">Se describe brevemente el propósito de cada módulo.</span>
+
+</div>
+
+
+<div class="col s12 m6 l3">
+  <div class="card hoverable">
+    <div class="card-image">
+      <img src="{% static 'img/registro.jpg' %}">
+      <span class="card-title">Registro</span>
+    </div>
+    <div class="card-content">
+      <p>El alumno deberá completar la información que se le solicita, con el objetivo de actualizar sus datos en la base de datos del plantel, así como proporcionarle los documentos que deberá llevar al plantel el día de su reinscripción.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col s12 m6 l3">
+    <div class="card hoverable">
+      <div class="card-image">
+        <img src="{% static 'img/pago.jpg' %}">
+        <span class="card-title">Aportación</span>
+      </div>
+      <div class="card-content">
+        <p>El alumno deberá validar el depósito de su contribución al plantel, ingresando la clave alfanumérica de 6 dígitos que recibió en la <b>oficina de Contraloría</b>.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col s12 m6 l3">
+      <div class="card hoverable">
+        <div class="card-image">
+          <img src="{% static 'img/reglamento.jpg' %}">
+          <span class="card-title">Reglamento</span>
+        </div>
+        <div class="card-content">
+          <p>El alumno tendrá que leer, revisar y aceptar el <b>Acuerdo de Convivencia Escolar</b>, en el cual se hace hincapié a la sana convivencia dentro del plantel y su compromiso por respetar los lineamientos del mismo.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col s12 m6 l3">
+        <div class="card hoverable">
+          <div class="card-image">
+            <img src="{% static 'img/cita.jpg' %}">
+            <span class="card-title">Cita</span>
+          </div>
+          <div class="card-content">
+            <p>Se asignará una fecha y hora específica a cada alumno para que lleve sus documentos al plantel y así finalizar su trámite de reinscripción.</p>
+            </div>
+            
+          </div>
+        </div>
+
+
+
+
+
+
+      </div>
+
+      {% endblock %}
+
+
+
+      {% block scripts %}
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+      <script>
+
+
+
+var data = {
+  labels: ["Completado", "No completado"],
+  datasets: [{
+    label: "Dataset #1",
+    backgroundColor: ["#26a69a", "#f44336"],
+    borderWidth: 1,
+    data: {{datos}},
+  }]
+};
+
+var ctx = document.getElementById("myChart").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data
+});
+
+
+</script>
+
+<script type="text/javascript">
+    Materialize.toast('Por el momento, no se muestra tu foto de perfil... sin embargo, no afecta tu proceso de reinscripción', 7000);
+</script>
+
+      {% endblock %}
+

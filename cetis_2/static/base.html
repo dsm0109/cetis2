@@ -1,0 +1,180 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+	<!-- fonts -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+	<!-- css -->
+	<link type="text/css" rel="stylesheet" href="{% static 'css/materialize.min.css' %}"  media="screen,projection"/>
+	<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+	<!-- metadatos -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'img/favicon.png' %}"/>
+
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<nav class="z-depth-0">
+		<div class="nav-wrapper">
+			<a href="#!" class="brand-logo hide-on-large-only">{% block titulo-nav-mob %}{% endblock %}</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			<ul class="hide-on-med-and-down">
+
+				<li class="aux-left">
+					<span class="titulo-nav">{% block titulo-nav %}{% endblock %}</span>
+				</li>
+
+
+
+				<li class="right">
+					<a class=" tooltipped" href="{% url 'logout' %}" data-position="bottom" data-delay="50" data-tooltip="Cerrar sesión">
+						<i class="material-icons">exit_to_app</i>
+					</a>
+				</li>
+
+
+				<li class="right">
+					<a href="{% url 'mi_info' %}">
+						<img src="{{user.imagen_perfil.url}}" class="img_perfil circle">
+						<span> <b>{{user.username}}</b></span>
+					</a>
+
+				</li>
+				
+
+
+
+			</ul>
+			<ul class="side-nav" id="mobile-demo">
+
+				<li>
+					<img class="logo-sm center" src="{% static 'img/dgeti.png' %}">
+				</li>
+
+				<li>
+					<div class="info-user-m center">
+						<img src="{{user.imagen_perfil.url}}" class="img_perfil_nav circle">
+						<h1 class="txt-matricula">{{user.username}}</h1>
+						<h5 class="txt-info-user">NÚMERO DE CONTROL</h5>
+					</div>
+				</li>
+
+
+				<li><a href="{% url 'inicio' %}">
+						<i class="material-icons ic-m">home</i>Inicio
+					</a>
+				</li>
+				<li><a href="{% url 'mi_info' %}">
+						<i class="material-icons ic-m">account_circle</i>Mi información
+					</a>
+				</li>
+				<li><a href="{% url 'pago' %}">
+						<i class="material-icons ic-m">attach_money</i>Aportación
+					</a>
+				</li>
+				<li><a href="{% url 'reglamento' %}">
+						<i class="material-icons ic-m">description</i>Reglamento
+					</a>
+				</li>
+				<li><a href="{% url 'cita' %}">
+						<i class="material-icons ic-m">access_time</i>Cita
+					</a>
+				</li>
+
+				<div class="divider"></div>
+
+				
+				<li><a href="{% url 'logout' %}">
+						<i class="material-icons">exit_to_app</i>Cerrar sesión
+					</a>
+				</li>
+
+
+			</ul>
+		</div>
+	</nav>
+
+	<div class="row">
+		<!-- navbar large -->
+		<div class="col l2 hide-on-med-and-down navbar-principal z-depth-3">
+			<ul>
+				<li>
+					<img class="logo-lg center" src="{% static 'img/dgeti.png' %}">
+				</li>
+
+				<li>
+					<div class="info-user">
+						
+					</div>
+				</li>
+				<li>
+					<a class="aux-btn-menu" href="{% url 'inicio' %}">
+						<i class="material-icons ic-m">home</i>Inicio
+					</a>
+				</li>
+				<li>
+					<a class="aux-btn-menu" href="{% url 'mi_info' %}">
+						<i class="material-icons ic-m">account_circle</i>Mi información
+					</a>
+				</li>
+				<li>
+					<a class="aux-btn-menu" href="{% url 'pago' %}">
+						<i class="material-icons ic-m">attach_money</i>Aportación
+					</a>
+				</li>
+				<li>
+					<a class="aux-btn-menu" href="{% url 'reglamento' %}">
+						<i class="material-icons ic-m">description</i>Reglamento
+					</a>
+				</li>
+				<li>
+					<a class="aux-btn-menu" href="{% url 'cita' %}">
+						<i class="material-icons ic-m">access_time</i>Cita
+					</a>
+				</li>
+
+			</ul>
+		</div>
+
+		<!-- contenido -->
+		<div class="col s12 m12 l10 offset-l2">
+			{% block contenido %}
+			{% endblock %}
+
+			<footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col s12 center">
+              	<img src="{% static 'img/cetis_2.png'%}" class="img_footer center">
+                <h6 class="white-text">¿Tienes alguna duda? Ponte en contacto con el plantel.</h6>
+                <p class="grey-text text-lighten-4">Al teléfono 5658 0078 o directamente en el plantel: Av. Hidalgo 62, Coyoacán, Del Carmen, 04100, Ciudad de México, CDMX.</p>
+              </div>
+              
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center">
+            © 2017 Todos los derechos reservados.
+            </div>
+          </div>
+        </footer>
+            
+		</div>
+
+	</div>
+
+
+	<!-- scripts -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+	{% block scripts %}{% endblock %}
+</body>
+
+
+</html>
